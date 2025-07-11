@@ -1,5 +1,6 @@
 package com.george.studyenum;
 
+@SuppressWarnings("all")
 public enum Constant2 {
     //1.枚举类的第一行只能罗列一些名称,这些名称都是常量并且每个常量记住的都是枚举类的一个对象。
     BOY, GIRL,
