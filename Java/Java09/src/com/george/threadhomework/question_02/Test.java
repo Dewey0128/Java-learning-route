@@ -1,5 +1,7 @@
 package com.george.threadhomework.question_02;
 
+import com.george.threadAPI.SleepAndJoin;
+
 /**
  * 第二题：分析以下需求，并用代码实现<p>
  * 训练目标：<p>
@@ -27,4 +29,50 @@ package com.george.threadhomework.question_02;
  * 	以上打印效果只是数据模拟,实际代码运行的效果会有差异<p>
  * */
 public class Test {
+    public static void main(String[] args) {
+
+        LotteryBox lotteryBox = new LotteryBox();
+        System.out.println("================* 打印方式一 *===============");
+        Thread t1 = new Thread(() -> {
+            int i = 0;
+            int success = 0;
+            while ( i < 6 && success!= 6){
+                if (lotteryBox.draw() && success < 6) {
+                    i ++;
+                    success ++;
+                }else i--;
+            }
+        }, "抽奖箱 1");
+
+        Thread t2 = new Thread(() ->{
+            int i = 0;
+            int success = 0;
+            while ( i < 6 && success != 6 ){
+                if (lotteryBox.draw() && success < 6) {
+                    i ++;
+                    success ++;
+                }else i--;
+            }
+        }, "抽奖箱 2");
+
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join(); // 等待线程1结束
+            t2.join(); // 等待线程2结束
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("================* 打印方式二 *===============");
+        System.out.println("在此次抽奖过程中，抽奖箱1总共产生了6个奖项，分别为：" + lotteryBox.getResults1() + "最高奖项为" + lotteryBox.getMaxPrize()[0]);
+        System.out.println("在此次抽奖过程中，抽奖箱2总共产生了6个奖项，分别为：" + lotteryBox.getResults2() + "最高奖项为" + lotteryBox.getMaxPrize()[1]);
+
+        int max = Math.max(lotteryBox.getMaxPrize()[0], lotteryBox.getMaxPrize()[1]);
+
+        if(lotteryBox.getMaxPrize()[0] > lotteryBox.getMaxPrize()[1]){
+            System.out.println("在此次抽奖过程中," + "抽奖箱1" + "中产生了最大奖项,该奖项金额为" + max +"元");
+        }else  System.out.println("在此次抽奖过程中," + "抽奖箱2" + "中产生了最大奖项,该奖项金额为" + max +"元");
+    }
 }
