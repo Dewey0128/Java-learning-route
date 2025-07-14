@@ -1,7 +1,5 @@
 package com.george.threadhomework.question_02;
 
-import com.george.threadAPI.SleepAndJoin;
-
 /**
  * 第二题：分析以下需求，并用代码实现<p>
  * 训练目标：<p>
@@ -34,24 +32,20 @@ public class Test {
         LotteryBox lotteryBox = new LotteryBox();
         System.out.println("================* 打印方式一 *===============");
         Thread t1 = new Thread(() -> {
-            int i = 0;
             int success = 0;
-            while ( i < 6 && success!= 6){
-                if (lotteryBox.draw() && success < 6) {
-                    i ++;
-                    success ++;
-                }else i--;
+            while (success < 6) {
+                if (lotteryBox.draw()) {
+                    success++;
+                }
             }
         }, "抽奖箱 1");
 
         Thread t2 = new Thread(() ->{
-            int i = 0;
             int success = 0;
-            while ( i < 6 && success != 6 ){
-                if (lotteryBox.draw() && success < 6) {
-                    i ++;
-                    success ++;
-                }else i--;
+            while (success < 6) {
+                if (lotteryBox.draw()) {
+                    success++;
+                }
             }
         }, "抽奖箱 2");
 
@@ -65,12 +59,13 @@ public class Test {
             e.printStackTrace();
         }
 
-        System.out.println("================* 打印方式二 *===============");
-        System.out.println("在此次抽奖过程中，抽奖箱1总共产生了6个奖项，分别为：" + lotteryBox.getResults1() + "最高奖项为" + lotteryBox.getMaxPrize()[0]);
-        System.out.println("在此次抽奖过程中，抽奖箱2总共产生了6个奖项，分别为：" + lotteryBox.getResults2() + "最高奖项为" + lotteryBox.getMaxPrize()[1]);
+        System.out.println("\n================* 打印方式二 *===============");
+        lotteryBox.printInfo();
 
         int max = Math.max(lotteryBox.getMaxPrize()[0], lotteryBox.getMaxPrize()[1]);
 
+        System.out.println("\n================* 打印方式三 *===============");
+        lotteryBox.printInfo();
         if(lotteryBox.getMaxPrize()[0] > lotteryBox.getMaxPrize()[1]){
             System.out.println("在此次抽奖过程中," + "抽奖箱1" + "中产生了最大奖项,该奖项金额为" + max +"元");
         }else  System.out.println("在此次抽奖过程中," + "抽奖箱2" + "中产生了最大奖项,该奖项金额为" + max +"元");

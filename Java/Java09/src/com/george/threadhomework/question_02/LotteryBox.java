@@ -51,4 +51,16 @@ public class LotteryBox implements PrintInfo{
         return results2;
     }
 
+    public void printInfo(){
+        System.out.println("在此次抽奖过程中，抽奖箱1总共产生了6个奖项，分别为：" + results1 + "最高奖项为" + maxPrize[0] + ",总奖金为：" + sum_res(results1));
+        System.out.println("在此次抽奖过程中，抽奖箱2总共产生了6个奖项，分别为：" + results2 + "最高奖项为" + maxPrize[1] + ",总奖金为：" + sum_res(results2));
+    }
+
+    public int sum_res(List<Integer> results){
+        int count = 0;
+        for (Integer result : results) {
+            count += result;
+        }
+        return count;
+    }
 }
