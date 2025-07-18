@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MyBatisCase {
@@ -99,10 +98,14 @@ public class MyBatisCase {
         sqlSession.commit();*/
 
         /*删除语句*/
+        //System.out.println("成功删除" + brandMapper.deleteById(29) + "条数据");
 
-
+        int[] ids = {28, 33, 34, 35};
+        System.out.println("成功删除" + brandMapper.deleteByIds(ids) + "条数据");
+        sqlSession.commit();
         //4. 释放资源
         System.out.println("\n");
+
         sqlSession.close();
     }
 }
