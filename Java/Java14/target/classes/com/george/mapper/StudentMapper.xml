@@ -7,8 +7,8 @@
 <!--2. 设置SQL映射文件的namespace属性为Mapper接口权限定名-->
 <mapper namespace="com.george.mapper.StudentMapper">
     <!-- 查询所有学生信息 -->
-    <select id="selectAll" resultType="student">
+<!--    <select id="selectAll" resultType="student">
         select * from student
-    </select>
+    </select>-->
 
 </mapper>

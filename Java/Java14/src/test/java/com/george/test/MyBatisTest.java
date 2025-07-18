@@ -1,3 +1,4 @@
+/*
 package com.george.test;
 
 import com.george.mapper.BrandMapper;
@@ -10,7 +11,9 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class MyBatisTest {
@@ -63,7 +66,7 @@ public class MyBatisTest {
     }
 
 
-   /* @Test
+    @Test
     public void testSelectByCondition() throws IOException {
         //接收参数
         int status = 1;
@@ -75,10 +78,10 @@ public class MyBatisTest {
         brandName = "%" + brandName + "%";
 
         //封装对象
-       *//* Brand brand = new Brand();
+        Brand brand = new Brand();
         brand.setStatus(status);
         brand.setCompanyName(companyName);
-        brand.setBrandName(brandName);*//*
+        brand.setBrandName(brandName);
 
         Map map = new HashMap();
         // map.put("status" , status);
@@ -106,10 +109,10 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }*/
+    }
 
 
-   /* @Test
+    @Test
     public void testSelectByConditionSingle() throws IOException {
         //接收参数
         int status = 1;
@@ -148,10 +151,10 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }*/
+    }
 
 
-   /* @Test
+    @Test
     public void testAdd() throws IOException {
         //接收参数
         int status = 1;
@@ -191,10 +194,10 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }*/
+    }
 
 
-    /*@Test
+    @Test
     public void testAdd2() throws IOException {
         //接收参数
         int status = 1;
@@ -236,10 +239,10 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }*/
+    }
 
 
-    /*@Test
+    @Test
     public void testUpdate() throws IOException {
         //接收参数
         int status = 0;
@@ -282,13 +285,13 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }*/
+    }
 
 
 
 
 
-   /* @Test
+    @Test
     public void testDeleteById() throws IOException {
         //接收参数
 
@@ -317,10 +320,10 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }*/
+    }
 
 
-    /*@Test
+    @Test
     public void testDeleteByIds() throws IOException {
         //接收参数
 
@@ -349,5 +352,6 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }*/
+    }
 }
+*/
