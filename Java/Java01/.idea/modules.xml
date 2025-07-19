@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Java15/HTML_CSS_JavaScript.iml" filepath="$PROJECT_DIR$/../Java15/HTML_CSS_JavaScript.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java07/Java_IO.iml" filepath="$PROJECT_DIR$/../Java07/Java_IO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java_JDBC/Java_JDBC.iml" filepath="$PROJECT_DIR$/Java_JDBC/Java_JDBC.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java13/Java_Maven.iml" filepath="$PROJECT_DIR$/../Java13/Java_Maven.iml" />
@@ -10,7 +11,6 @@
       <module fileurl="file://$PROJECT_DIR$/../Java02/Java_study02.iml" filepath="$PROJECT_DIR$/../Java02/Java_study02.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java03/Java_study03.iml" filepath="$PROJECT_DIR$/../Java03/Java_study03.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java09/Java_thread.iml" filepath="$PROJECT_DIR$/../Java09/Java_thread.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Java15/html.iml" filepath="$PROJECT_DIR$/../Java15/html.iml" />
     </modules>
   </component>
 </project>

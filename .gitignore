@@ -1,1 +1,23 @@
+# 编译输出
 /target/
+/bin/
+/build/
+*.class
+*.jar
+*.war
+
+# 日志文件
+*.log
+logs/
+
+# IDE 文件
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# 系统文件
+.DS_Store
+Thumbs.db

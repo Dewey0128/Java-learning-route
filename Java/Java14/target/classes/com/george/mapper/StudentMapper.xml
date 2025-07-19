@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--2. 设置SQL映射文件的namespace属性为Mapper接口权限定名-->
+<mapper namespace="com.george.mapper.StudentMapper">
+    <!-- 查询所有学生信息 -->
+<!--    <select id="selectAll" resultType="student">
+        select * from student
+    </select>-->
+
+</mapper>
