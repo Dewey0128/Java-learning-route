@@ -1,0 +1,10 @@
+com\george\web\DeleteByIdServlet.class
+com\george\web\DeleteServlet.class
+com\george\web\UpdateServlet.class
+com\george\web\AddServlet.class
+com\george\web\SelectAllServlet.class
+com\george\mapper\BrandMapper.class
+com\george\pojo\Brand.class
+com\george\service\BrandService.class
+com\george\web\SelectByIdServlet.class
+com\george\util\SqlSessionFactoryUtils.class
