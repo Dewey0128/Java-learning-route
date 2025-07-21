@@ -1,4 +1,4 @@
-package com.george.web;
+package com.george.web.ServletStudy;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;

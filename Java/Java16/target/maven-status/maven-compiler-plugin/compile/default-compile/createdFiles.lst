@@ -1,1 +1,14 @@
-com\george\web\ServletDemo1.class
+com\george\mapper\UserMapper.class
+com\george\web\ForwardAndRedirect\RedirectServlet02.class
+com\george\web\LoginRegisterCase\RegisterServlet.class
+com\george\web\ForwardAndRedirect\ForwardServlet02.class
+com\george\web\ForwardAndRedirect\ForwardServlet01.class
+com\george\web\LoginRegisterCase\LoginServlet.class
+com\george\web\ReqAndRes\RequestDemo.class
+com\george\web\ForwardAndRedirect\RedirectServlet01.class
+com\george\web\ResponseFiles\UploadServlet.class
+com\george\pojo\User.class
+com\george\web\GarbageCode\GarbledServlet.class
+com\george\web\ServletStudy\ServletDemo1.class
+com\george\util\SqlSessionFactoryUtils.class
+com\george\web\ReqAndRes\RequestDemoGeneral.class
