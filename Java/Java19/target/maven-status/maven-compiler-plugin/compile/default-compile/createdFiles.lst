@@ -1,5 +1,6 @@
 com\george\mapper\UserMapper.class
 com\george\web\RegisterServlet.class
+com\george\listener\ContextLoaderListener.class
 com\george\web\DeleteByIdServlet.class
 com\george\web\DeleteServlet.class
 com\george\web\CheckCodeServlet.class
@@ -13,5 +14,6 @@ com\george\web\LoginServlet.class
 com\george\util\CheckCodeUtil.class
 com\george\service\BrandService.class
 com\george\web\SelectByIdServlet.class
+com\george\filter\LoginFilter.class
 com\george\pojo\User.class
 com\george\util\SqlSessionFactoryUtils.class
