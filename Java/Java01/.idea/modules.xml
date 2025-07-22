@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Java17/Comprehensive_Small_Case.iml" filepath="$PROJECT_DIR$/../Java17/Comprehensive_Small_Case.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Java18/Cookie_Session.iml" filepath="$PROJECT_DIR$/../Java18/Cookie_Session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Java19/Cookie_Session_Login_Case.iml" filepath="$PROJECT_DIR$/../Java19/Cookie_Session_Login_Case.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java15/HTML_CSS_JavaScript.iml" filepath="$PROJECT_DIR$/../Java15/HTML_CSS_JavaScript.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java07/Java_IO.iml" filepath="$PROJECT_DIR$/../Java07/Java_IO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java_JDBC/Java_JDBC.iml" filepath="$PROJECT_DIR$/Java_JDBC/Java_JDBC.iml" />

@@ -10,10 +10,15 @@
         <module name="Comprehensive_Small_Case" />
         <module name="Java_Maven" />
         <module name="Tomcat" />
+        <module name="Cookie_Session" />
+        <module name="Cookie_Session_Login_Case" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Comprehensive_Small_Case" target="8" />
+      <module name="Cookie_Session" target="8" />
+      <module name="Cookie_Session_Login_Case" target="8" />
+      <module name="Java18" target="8" />
       <module name="Java_Maven" target="8" />
       <module name="Java_Mybatis" target="8" />
       <module name="Tomcat" target="8" />

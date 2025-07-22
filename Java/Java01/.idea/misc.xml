@@ -3,6 +3,8 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/../Java16" />
     <file type="web" url="file://$PROJECT_DIR$/../Java17" />
+    <file type="web" url="file://$PROJECT_DIR$/../Java18" />
+    <file type="web" url="file://$PROJECT_DIR$/../Java19" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -11,6 +13,8 @@
         <option value="$PROJECT_DIR$/../Java14/pom.xml" />
         <option value="$PROJECT_DIR$/../Java16/pom.xml" />
         <option value="$PROJECT_DIR$/../Java17/pom.xml" />
+        <option value="$PROJECT_DIR$/../Java18/pom.xml" />
+        <option value="$PROJECT_DIR$/../Java19/pom.xml" />
       </list>
     </option>
   </component>

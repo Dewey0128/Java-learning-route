@@ -1,0 +1,169 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 表单容器样式 */
+.form-div {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.form-div:hover {
+    transform: translateY(-5px);
+}
+
+/* 标题样式 */
+.reg-content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reg-content h1 {
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.reg-content span {
+    color: #7f8c8d;
+}
+
+.reg-content a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.reg-content a:hover {
+    text-decoration: underline;
+}
+
+/* 表格样式 */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+td:first-child {
+    width: 25%;
+    text-align: right;
+    padding-right: 15px;
+    color: #34495e;
+    font-weight: 500;
+}
+
+td.inputs {
+    width: 75%;
+}
+
+/* 输入框样式 */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dce4ec;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* 验证码区域样式 */
+#checkCodeImg {
+    vertical-align: middle;
+    height: 42px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#changeImg {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#changeImg:hover {
+    text-decoration: underline;
+}
+
+/* 错误提示样式 */
+.err_msg {
+    font-size: 14px;
+    margin-top: 5px;
+    display: inline-block;
+    min-height: 20px;
+}
+
+/* 按钮样式 */
+.buttons {
+    text-align: center;
+    margin-top: 25px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    padding: 12px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+input[type="reset"] {
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+}
+
+input[type="reset"]:hover {
+    background-color: #d5dbdb;
+}
+
+/* 复选框样式 */
+input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: #3498db;
+}
+
+/* 清除浮动 */
+.clear {
+    clear: both;
+}

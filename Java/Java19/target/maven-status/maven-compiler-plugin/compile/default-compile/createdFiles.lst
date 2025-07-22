@@ -1,0 +1,17 @@
+com\george\mapper\UserMapper.class
+com\george\web\RegisterServlet.class
+com\george\web\DeleteByIdServlet.class
+com\george\web\DeleteServlet.class
+com\george\web\CheckCodeServlet.class
+com\george\web\UpdateServlet.class
+com\george\web\AddServlet.class
+com\george\web\SelectAllServlet.class
+com\george\mapper\BrandMapper.class
+com\george\service\UserService.class
+com\george\pojo\Brand.class
+com\george\web\LoginServlet.class
+com\george\util\CheckCodeUtil.class
+com\george\service\BrandService.class
+com\george\web\SelectByIdServlet.class
+com\george\pojo\User.class
+com\george\util\SqlSessionFactoryUtils.class
