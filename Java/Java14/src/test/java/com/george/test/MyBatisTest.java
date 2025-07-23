@@ -1,4 +1,3 @@
-/*
 package com.george.test;
 
 import com.george.mapper.BrandMapper;
@@ -66,7 +65,7 @@ public class MyBatisTest {
     }
 
 
-    @Test
+/*    @Test
     public void testSelectByCondition() throws IOException {
         //接收参数
         int status = 1;
@@ -109,10 +108,10 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }
+    }*/
 
 
-    @Test
+/*    @Test
     public void testSelectByConditionSingle() throws IOException {
         //接收参数
         int status = 1;
@@ -151,7 +150,7 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }
+    }*/
 
 
     @Test
@@ -242,7 +241,7 @@ public class MyBatisTest {
     }
 
 
-    @Test
+/*    @Test
     public void testUpdate() throws IOException {
         //接收参数
         int status = 0;
@@ -285,7 +284,7 @@ public class MyBatisTest {
         //5. 释放资源
         sqlSession.close();
 
-    }
+    }*/
 
 
 
@@ -354,4 +353,3 @@ public class MyBatisTest {
 
     }
 }
-*/
