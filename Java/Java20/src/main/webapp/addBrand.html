@@ -8,7 +8,9 @@
 <body>
 <h3>添加品牌</h3>
 <form action="" method="post">
-    品牌名称：<input id="brandName" name="brandName"><br>
+    <div>品牌名称：<input id="brandName" name="brandName"><br>
+            <span id="brand_err" style="display: none">企业已存在</span>
+    </div>
     企业名称：<input id="companyName" name="companyName"><br>
     排序：<input id="ordered" name="ordered"><br>
     描述信息：<textarea rows="5" cols="20" id="description" name="description"></textarea><br>
@@ -19,6 +21,79 @@
     <input type="button" id="btn"  value="提交">
 </form>
 
+<script src="js/axios-0.18.0.js"></script>
+<script>
+
+    //1. 给用户名输入框绑定 失去焦点事件
+    document.getElementById("brandName").onblur = function () {
+        //2. 发送ajax请求
+        // 获取用户名的值
+        var brandName = this.value;
+
+        //2.1. 创建核心对象
+        let xhttp;
+        if (window.XMLHttpRequest) {
+            xhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //2.2. 发送请求
+        xhttp.open("GET", "http://localhost:8080/ajax/selectBrandServlet?brandName=" + brandName);
+        xhttp.send();
+
+        //2.3. 获取响应
+        xhttp.onreadystatechange = function () {
+            /*console.log(this.responseText)*/
+            if (this.readyState === 4 && this.status === 200) {
+                //alert(this.responseText);
+                //判断
+                if (this.responseText === "true") {
+                    //用户名存在，显示提示信息
+                    document.getElementById("brand_err").style.display = '';
+                } else {
+                    //用户名不存在 ，去除提示信息
+                    document.getElementById("brand_err").style.display = 'none';
+
+                    //绑定 提交按钮事件
+                    document.getElementById("btn").onclick = function () {
+                        //将表单数据转为json
+                        let formData = {
+                            brandName : "",
+                            companyName : "",
+                            ordered : "",
+                            description : "",
+                            status : ""
+                        };
+
+                        //获取表单数据 并设置
+                        formData.brandName = document.getElementById("brandName").value;
+                        formData.companyName = document.getElementById("companyName").value;
+                        formData.ordered = document.getElementById("ordered").value;
+                        formData.description = document.getElementById("description").value;
+
+                        let status = document.getElementsByName("status");
+                        for (let i = 0; i < status.length; i++) {
+                            formData.status = status[i].value;
+                        }
+
+                        //再次发起ajax请求
+                        axios({
+                            method : "post",
+                            url : "http://localhost:8080/ajax/addServlet",
+                            data: formData
+                        }).then(function (resp) {
+                            //判断响应数据是否为 success
+                            if(resp.data === "success") {
+                                location.href = "http://localhost:8080/ajax/brand.html";
+                            }
+                        })
+                    }
+                }
+            }
+        };
+    }
+</script>
 
 </body>
 </html>

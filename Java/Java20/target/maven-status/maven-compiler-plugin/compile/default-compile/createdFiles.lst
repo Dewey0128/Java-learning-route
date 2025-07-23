@@ -1,10 +1,12 @@
 com\george\mapper\UserMapper.class
+com\george\web\AddServlet.class
 com\george\web\SelectAllServlet.class
 com\george\mapper\BrandMapper.class
 com\george\service\UserService.class
 com\george\pojo\Brand.class
 com\george\service\BrandService.class
 com\george\web\AjaxDemo01.class
+com\george\web\SelectBrandServlet.class
 com\george\pojo\User.class
 com\george\util\SqlSessionFactoryUtils.class
 com\george\web\SelectUserServlet.class

@@ -45,6 +45,7 @@ public class AddServlet extends HttpServlet {
         brand.setDescription(request.getParameter("description"));
         brand.setStatus(Integer.parseInt(request.getParameter("status")));
 
+        //System.out.println(brand.getBrandName());
         if(service.selectByBrandName(brand.getBrandName()) != null){
             writer.write("该企业已存在！请重新输入！");
         }else{
