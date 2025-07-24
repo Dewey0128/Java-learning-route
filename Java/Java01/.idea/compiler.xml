@@ -12,6 +12,7 @@
         <module name="Cookie_Session_Login_Case" />
         <module name="Java_Maven" />
         <module name="Cookie_Session" />
+        <module name="Vue_Element" />
         <module name="AJAX" />
       </profile>
     </annotationProcessing>

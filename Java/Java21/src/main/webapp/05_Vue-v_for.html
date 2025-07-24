@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <div v-for="addr in addrs">
+        {{addr}} <br>
+    </div>
+
+    <hr>
+
+    <div v-for="(addr, i) in addrs">
+        {{i}} ： {{addr}} <br>
+    </div>
+
+</div>
+
+
+<script src = "js/vue.js"></script>
+<script>
+    new Vue({
+        el : "#app",
+        data(){
+            return {
+                count : 0,
+                url : "http://www.baidu.com",
+                addrs : ["福州", "泉州", "厦门", "潮汕", "顺德"]
+            }
+        },
+        methods:{
+            show(){
+                alert("我被点了！")
+            }
+        },
+        mounted(){
+            alert("挂载完成！")
+        }
+    });
+</script>
+</body>
+</html>
