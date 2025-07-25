@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <loggers>
+        <!--
+            日志级别（从低到高）：
+                TRACE < DEBUG < INFO < WARN < ERROR < FATAL
+        -->
+        <root level="DEBUG">
+            <appender-ref ref="spring6log"/>
+            <appender-ref ref="RollingFile"/>
+            <appender-ref ref="log"/>
+        </root>
+    </loggers>
+
+    <appenders>
+        <!--输出日志信息到控制台（带颜色）-->
+        <console name="spring6log" target="SYSTEM_OUT">
+            <!--控制日志输出的格式（添加颜色）-->
+            <PatternLayout>
+                <pattern>
+                    %style{%d{yyyy-MM-dd HH:mm:ss.SSS}}{bright,blue} %highlight{%-5level}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} %style{[%t]}{bright,magenta} %style{%c{1.}.%M(%L)}{cyan}:
+                    %msg
+                    %style{----------------------------------------}{faint}%n
+                </pattern>
+            </PatternLayout>
+        </console>
+
+        <!--文件会打印出所有信息，这个log每次运行程序会自动清空，适合临时测试用-->
+        <File name="log" fileName="E:/Java/logs/Spring6Log/test.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+
+        <!-- 滚动日志文件（存档用，文件日志一般不加颜色，避免乱码）-->
+        <RollingFile name="RollingFile" fileName="E:/Java/logs/Spring6Log/app.log"
+                     filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="50MB"/>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </appenders>
+</configuration>
