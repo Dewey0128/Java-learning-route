@@ -11,6 +11,7 @@
     <modules>
         <module>Spring01</module>
         <module>Spring02</module>
+        <module>Spring03</module>
     </modules>
 
     <properties>
@@ -64,6 +65,12 @@
             <version>1.1.20</version>
         </dependency>
 
+        <!-- 引入Resource注解 -->
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>2.1.1</version>
+        </dependency>
     </dependencies>
 
 

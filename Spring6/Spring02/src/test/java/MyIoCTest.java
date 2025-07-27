@@ -1,7 +1,9 @@
 import com.alibaba.druid.pool.DruidDataSource;
 import com.george.dao.PersonDao;
+import com.george.factorybean.Car;
+import com.george.factorybean.CarFactoryBean;
 import com.george.pojo.Book;
-import com.george.pojo.User;
+import com.george.beanlife.User;
 import com.george.pojo.collections.Student;
 import com.george.pojo.objectBean.Employee;
 import org.junit.jupiter.api.Test;
@@ -113,5 +115,24 @@ public class MyIoCTest {
         DruidDataSource dataSource = (DruidDataSource) context.getBean(DataSource.class);
         Connection connection = dataSource.getConnection();
         System.out.println(dataSource.getUrl());
+    }
+
+    @Test
+    // Bean的七个生命周期
+    public void testLife(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean-life.xml");
+        User bean = context.getBean("userLife", User.class);
+        System.out.println("6. 通过IOC容器获取bean并使用");
+        context.close();
+    }
+
+    @Test
+    public void testFactoryBean(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean-factory.xml");
+
+        Car car =(Car) context.getBean("car");
+
+        car.run();
+
     }
 }
