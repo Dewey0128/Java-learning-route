@@ -9,7 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>IoC-annotation</artifactId>
+<!--    可以省略groupId和version，因为与父工程保持一致-->
+    <artifactId>static-proxy</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -57,5 +58,4 @@
             <version>2.1.1</version>
         </dependency>
     </dependencies>
-
 </project>
