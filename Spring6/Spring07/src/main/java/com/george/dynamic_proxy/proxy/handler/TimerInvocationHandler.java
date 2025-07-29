@@ -1,4 +1,4 @@
-package com.george.dynamic_proxy.service.MyInvocationHandler;
+package com.george.dynamic_proxy.proxy.handler;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

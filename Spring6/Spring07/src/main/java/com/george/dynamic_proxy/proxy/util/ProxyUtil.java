@@ -1,7 +1,6 @@
-package com.george.dynamic_proxy.uilt;
+package com.george.dynamic_proxy.proxy.util;
 
-import com.george.dynamic_proxy.service.MyInvocationHandler.TimerInvocationHandler;
-import com.george.dynamic_proxy.service.OrderService;
+import com.george.dynamic_proxy.proxy.handler.TimerInvocationHandler;
 
 import java.lang.reflect.Proxy;
 

@@ -14,9 +14,10 @@
         <module>Spring03</module>
         <module>Spring06</module>
         <module>Spring07</module>
+        <module>Spring08</module>
     </modules>
 
-<!--    Maven属性配置-->
+    <!--    Maven属性配置-->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -26,8 +27,8 @@
         <servlet-version>4.0.1</servlet-version>
     </properties>
 
-<!--    使用dependencyManagement 进行版本锁定-->
-<!--    只是定义，并没有真正的添加依赖，子工程根据需要有选择的添加依赖-->
+    <!--    使用dependencyManagement 进行版本锁定-->
+    <!--    只是定义，并没有真正的添加依赖，子工程根据需要有选择的添加依赖-->
     <dependencyManagement>
         <dependencies>
             <!--spring context依赖-->
@@ -38,11 +39,19 @@
                 <version>${spring-version}</version>
             </dependency>
 
+            <!--spring aspects依赖-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
             <!--junit5测试-->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
                 <version>5.3.1</version>
+                <scope>test</scope>
             </dependency>
 
             <!--log4j2的依赖-->
@@ -81,6 +90,7 @@
                 <version>2.1.1</version>
             </dependency>
         </dependencies>
+
     </dependencyManagement>
 
 </project>
