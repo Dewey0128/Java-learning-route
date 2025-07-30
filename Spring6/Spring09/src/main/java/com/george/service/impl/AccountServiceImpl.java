@@ -3,8 +3,6 @@ package com.george.service.impl;
 import com.george.mapper.AccountMapper;
 import com.george.pojo.Account;
 import com.george.service.AccountService;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
 
-    private AccountMapper accountMapper;
+    private final AccountMapper accountMapper;
 
     @Autowired
     public AccountServiceImpl(AccountMapper accountMapper) {
@@ -45,24 +43,5 @@ public class AccountServiceImpl implements AccountService {
         if (count != 2) {
             throw new RuntimeException("转账失败，请联系银行");
         }
-    }
-
-    /**
-     * 获取
-     * @return accountMapper
-     */
-    public AccountMapper getAccountMapper() {
-        return accountMapper;
-    }
-
-    /**
-     * 设置
-     */
-    public void setAccountMapper(AccountMapper accountMapper) {
-        this.accountMapper = accountMapper;
-    }
-
-    public String toString() {
-        return "AccountServiceImpl{accountMapper = " + accountMapper + "}";
     }
 }

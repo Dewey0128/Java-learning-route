@@ -4,6 +4,10 @@
 
 学习内容主要有：**Java基础**、**MySQL**、**Spring**、Mybatis、**SpringBoot**、SpringCloud、**Redis**、**RabbitMQ**、**JUC**、**JVM**、Netty、Zookeeper、Dubbo、GIt、Maven、计算机网络、操作系统、设计模式、Elasticsearch、Docker、MongoDB；
 
+
+
+Java基础 ---> JavaWeb ---> Maven ---> Spring6(手写Spring, Mybatis)
+
 ----
 
 #### Java基础
