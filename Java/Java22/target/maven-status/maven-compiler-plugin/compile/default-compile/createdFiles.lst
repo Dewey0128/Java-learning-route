@@ -1,0 +1,7 @@
+com\george\web\servlet\AddServlet.class
+com\george\service\BrandService.class
+com\george\service\impl\BrandServiceImpl.class
+com\george\web\servlet\SelectAllServlet.class
+com\george\mapper\BrandMapper.class
+com\george\pojo\Brand.class
+com\george\util\SqlSessionFactoryUtils.class
