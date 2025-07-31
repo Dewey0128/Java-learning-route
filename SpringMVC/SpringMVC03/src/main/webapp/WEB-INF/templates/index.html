@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RequestMapping 注解详解</title>
+</head>
+<body>
+    <h1>首页</h1>
+    <p>RequestMapping 的 value 属性</p>
+    <a th:href="@{/value/first}">@RequestMapping注解可以出现在类上，也可以出现在方法上</a><br><br>
+
+    <a th:href="@{/value/2nd}">@RequestMapping value属性本身是一个 String[] 字符串数组，说明多个请求路径可以映射同一个处理器方法。</a><br>
+
+    <a th:href="@{/value/second}">@RequestMapping value属性本身是一个 String[] 字符串数组，说明多个请求路径可以映射同一个处理器方法。</a><br><br>
+
+    <hr>
+
+    <p>RequestMapping 的 method 属性</p>
+    <p>@RequsetMapping 指定method方法：</p>
+    <form th:action="@{/method/login01}" method="post">
+        用户名：<input type="text" name="username"><br>
+        密码:<input type="password" name="password"><br>
+        <input type="submit" value="登入">
+    </form>
+
+    <p>@PostMapping 衍生Mapping注解：</p>
+    <form th:action="@{/method/login02}" method="post">
+        用户名：<input type="text" name="username"><br>
+        密码:<input type="password" name="password"><br>
+        <input type="submit" value="登入">
+    </form>
+
+    <hr>
+    <p>PostMapping 的 params 属性</p>
+    <a th:href="@{/params/testParams01?username=zk&password=123}">@PostMapping 测试 params 属性</a><br>
+    <!--下面会报错 因为传入了 username 值-->
+    <a th:href="@{/params/testParams02(username='zk', password='123')}">@PostMapping 测试 params 属性</a>
+
+
+
+
+</body>
+</html>

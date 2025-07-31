@@ -10,6 +10,8 @@
     <modules>
         <module>SpringMVC01</module>
         <module>SpringMVC02</module>
+        <module>SpringMVC03</module>
+        <module>SpringMVC04</module>
     </modules>
 
     <properties>
