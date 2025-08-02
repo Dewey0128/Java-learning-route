@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>共享域数据</title>
+</head>
+<body>
+
+<p>Request 域：</p>
+
+<a th:href="@{/request/modelAndView}" style="color: red;">在SpringMVC中使用 ModelAndView 实现request域数据共享</a><br>
+<a th:href="@{/request/servlet}">在SpringMVC中使用原生Servlet API实现request域数据共享</a><br>
+<a th:href="@{/request/model}">在SpringMVC中使用 Model 实现request域数据共享</a><br>
+<a th:href="@{/request/modelmap}">在SpringMVC中使用 ModelMap 实现request域数据共享</a><br>
+<a th:href="@{/request/map}">在SpringMVC中使用 Map 实现request域数据共享</a>
+
+<hr>
+
+<p>Session 域：</p>
+<a th:href="@{/session/servlet}">在SpringMVC中使用原生Servlet API实现session域数据共享</a><br>
+<a th:href="@{/session/anno}">在SpringMVC中使用 @SessionAttribution 实现session域数据共享</a><br>
+
+<hr>
+
+<p>Application 域：</p>
+<a th:href="@{/application/applicationScope}">在SpringMVC中使用原生Servlet API实现application域数据共享</a>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+</head>
+<body>
+    <h1 style="color: green;">Test Success</h1>
+
+    <p>Request 域：</p>
+    <div th:text="${testRequestScope}"></div>
+    <div th:text="${testRequestScope}"></div>
+    <div th:text="${testRequestScope}"></div>
+    <div th:text="${testRequestScope}"></div>
+    <div th:text="${testRequestScope}"></div>
+
+    <p>Session 域：</p>
+    <div th:text="${session.testSessionScope}"></div>
+    <div th:text="${x}"></div>
+    <div th:text="${y}"></div>
+
+    <p>Application 域：</p>
+    <div th:text="${application.applicationScope}"></div>
+
+</body>
+</html>

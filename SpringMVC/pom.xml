@@ -12,6 +12,7 @@
         <module>SpringMVC02</module>
         <module>SpringMVC03</module>
         <module>SpringMVC04</module>
+        <module>SpringMVC05</module>
     </modules>
 
     <properties>
