@@ -16,6 +16,7 @@
         <module>Spring07</module>
         <module>Spring08</module>
         <module>Spring09</module>
+        <module>Spring04</module>
     </modules>
 
     <!--    Maven属性配置-->
