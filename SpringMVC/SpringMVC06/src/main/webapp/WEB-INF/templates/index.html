@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+<p>转发 forward 测试：</p>
+<a th:href="@{/forward/a}">to A Page...</a><br>
+<a th:href="@{/forward/b}">to B Page...</a>
+
+<hr>
+
+<p>转发 forward 测试：</p>
+<a th:href="@{/redirect/a}">to A Page...</a><br>
+<a th:href="@{/redirect/b}">to B Page...</a>
+</body>
+</html>
