@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+<p>首页</p>
+<p>GET 请求方法</p>
+<!--查询用户信息-->
+<a th:href="@{/user}">查询用户信息</a><br>
+<!--根据Id查询用户信息-->
+<a th:href="@{/user/120}">根据Id查询用户信息</a>
+
+<hr>
+<p>POST 请求方法</p>
+<form th:action="@{/user}" method="post">
+    用户名：<input type="text" name="username"><br>
+    密码：<input type="password" name="password"><br>
+    <input type="submit" th:value="保存">
+</form>
+
+<hr>
+<p>PUT 请求方法</p>
+<form th:action="@{/user}" method="post">
+    <!--隐藏域-->
+    <!--需要在web.xml文件中添加过滤器-->
+    <input type="hidden" name="_method" value="PUT">
+    用户名：<input type="text" name="username"><br>
+    密码：<input type="password" name="password"><br>
+    <input type="submit" th:value="修改">
+</form>
+
+<hr>
+<p>DELETE 请求方法</p>
+
+<a th:href="@{/user/123}" onclick="del(event)">删除用户信息</a>
+
+<form id="delForm" method="post">
+    <!--隐藏域-->
+    <!--需要在web.xml文件中添加过滤器-->
+    <input type="hidden" name="_method" value="delete">
+</form>
+
+<script>
+    function del(event){
+        // 获取表单
+        let delForm = document.getElementById('delForm');
+        //给Form表单action赋值
+        delForm.action = event.target.href;
+        //发送POST请求提交表单
+        delForm.submit();
+        //非常重要：需要阻止超链接的默认行为
+        event.preventDefault();
+
+    }
+</script>
+
+</body>
+</html>

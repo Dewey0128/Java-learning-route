@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>修改用户</title>
+  <link rel="stylesheet" th:href="@{/static/css/user.css}" type="text/css"></link>
+</head>
+<body>
+  <h1>修改用户</h1>
+  <form th:action="@{/user/update}" method="post">
+      <input type="hidden" name="_method" value="put">
+    <!-- 正确写法 -->
+    <input type="hidden" th:name="id" th:value="${user.id}">
+    <label>用户名:</label>
+    <label>
+      <input type="text" name="username" th:value="${user.getUsername()}" required>
+    </label>
+
+    <label>性别:</label>
+    <label>
+      <select name="gender" required>
+        <option value="">-- 请选择 --</option>
+        <!-- 男选项：判断用户性别是否为'男'，是则选中 -->
+        <option th:value="男"
+                th:selected="${user != null and user.gender == '男'}">
+          男
+        </option>
+        <!-- 女选项：判断用户性别是否为'女'，是则选中 -->
+        <option th:value="女"
+                th:selected="${user != null and user.gender == '女'}">
+          女
+        </option>
+      </select>
+    </label>
+
+    <label>邮箱:</label>
+    <label>
+      <input type="email" name="email" th:value="${user.getEmail()}" required>
+    </label>
+
+    <button type="submit" >修改</button>
+  </form>
+</body>
+</html>

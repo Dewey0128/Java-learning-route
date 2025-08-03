@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>用户列表</title>
+  <link rel="stylesheet" th:href="@{/static/css/user.css}" type="text/css"/>
+</head>
+<body>
+
+  <div class="header">
+    <h1>用户列表</h1>
+  </div>
+
+  <div class="add-button-wrapper">
+    <a class="add-button" th:href="@{/user_add}">新增用户</a>
+    <a class="add-button" th:href="@{/user}">刷新</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>用户名</th>
+        <th>性别</th>
+        <th>邮箱</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 使用Thymeleaf的each迭代器遍历users集合 -->
+      <tr th:each="user : ${users}">
+        <td th:text="${user.id}">1</td>
+        <td th:text="${user.username}">张三</td>
+        <td th:text="${user.gender}">男</td>
+        <td th:text="${user.email}">zhangsan@powernode.com</td>
+        <td>
+          <!-- 修改按钮 - 携带用户ID参数 -->
+          <!-- 正确：将id作为路径变量，而非请求参数 -->
+          <a th:href="@{/user/edit/{id}(id=${user.id})}">修改</a>
+          <!-- 删除按钮 - 携带用户ID参数 -->
+          <a th:href="@{/user/delete/{id}(id=${user.id})}"
+             onclick="del(event)">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form id="delForm" method="post">
+    <!--隐藏域-->
+    <!--需要在web.xml文件中添加过滤器-->
+    <input type="hidden" name="_method" value="delete">
+  </form>
+  <script>
+    function del(event){
+      // 获取表单
+      let delForm = document.getElementById('delForm');
+      //给Form表单action赋值
+      delForm.action = event.target.href;
+      //发送POST请求提交表单
+      delForm.submit();
+      //非常重要：需要阻止超链接的默认行为
+      event.preventDefault();
+
+      return confirm('确定要删除该用户吗？')
+    }
+  </script>
+</body>
+</html>
