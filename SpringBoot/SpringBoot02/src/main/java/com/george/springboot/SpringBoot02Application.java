@@ -1,11 +1,13 @@
-package com.george;
+package com.george.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyApplication {
+public class SpringBoot02Application {
+
     public static void main(String[] args) {
-        SpringApplication.run(MyApplication.class, args);
+        SpringApplication.run(SpringBoot02Application.class, args);
     }
+
 }
