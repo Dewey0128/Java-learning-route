@@ -560,6 +560,18 @@ Spring MVC框架：课堂笔记（只记重点）
     然后，要注意@RequestBody标注在处理器方法的形参上，也就是说形参只要准备一个user对象就行了，前端提交一个json字符串，直接将其转换成java对象user
     以上前端请求体提交JSON格式的字符串，那么后端直接将json格式字符串转换成java对象，这里使用的消息转换器是：MappingJackson2HttpMessageConverter
 
+        @RequestBody的设计初衷是处理 JSON/XML 等结构化数据（Content-Type: application/json）。
+    对于表单提交的application/x-www-form-urlencoded数据，
+    无论 POST 还是 PUT，都应该用对象绑定（如User user）或@RequestParam接收，而非@RequestBody。
+
+        @RequestBody 对于PUT和DELETE 请求 ”
+            过滤器会先先拦截原生 POST 请求，从请求参数中读取_method的值（这里是PUT），
+            然后将请求方法修改为 PUT，再传递给后续的处理器。
+            关键问题：为了读取_method参数（它是表单数据的一部分，属于application/x-www-form-urlencoded格式），
+                过滤器需要提前解析请求体。而 HTTP 规范中，请求体的输入流（InputStream）只能被读取一次。
+                导致后续的@RequestBody再尝试读取时，会发现输入流已经被关闭（没有数据可读），
+                导致 SpringMVC 无法解析请求体，最终抛出 400 错误。
+
 32. RequestEntity
     这个类的实例封装了整个请求协议。
     SpringMVC自动创建好，传递给处理器方法的参数上。

@@ -1,6 +1,7 @@
 package com.george.controller;
 
 import com.george.pojo.User;
+import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,13 +47,13 @@ public class RestfulController {
      * @return modelAndView
      */
     @PostMapping("/user")
-    public ModelAndView testPost(User user){
+    public ModelAndView testPost(@RequestBody String requestBodyStr){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("urlType","http://localhost:8080/springmvc/user");
         modelAndView.addObject("testType","测试 REATFul 的 Post 请求");
         modelAndView.setViewName("ok");
 
-        System.out.println(user);
+        System.out.println(requestBodyStr);
 
         return modelAndView;
     }
@@ -72,7 +73,6 @@ public class RestfulController {
         modelAndView.setViewName("ok");
 
         System.out.println(user);
-
         return modelAndView;
     }
 

@@ -65,6 +65,13 @@
             <artifactId>thymeleaf-spring6</artifactId>
             <version>3.1.2.RELEASE</version>
         </dependency>
+
+        <!--专门将Java对象转换为JSON格式数据-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.19.1</version> <!-- 或者更高的版本 -->
+        </dependency>
     </dependencies>
 
 </project>
