@@ -1,0 +1,19 @@
+myValue:
+  username: Jackson
+  password: 123
+  age: 20
+
+spring:
+  config:
+    import:
+      - classpath:/config/application-mysql.yml
+      - classpath:/config/application-redis.yml
+  profiles:
+    active: dev
+
+bind:
+  bean:
+    username: Jack
+    password: 1212
+    age: 21
+
