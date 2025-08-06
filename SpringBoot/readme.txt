@@ -146,11 +146,94 @@
                 第三：文档切割
                     `---` 这个符号下面的配置可以认为是一个独立的yaml文件。便于庞大文件的阅读。
     3.4 配置文件合并
-
+        spring:
+          config:
+            import:
+              - classpath:/config/application-mysql.yml
+              - classpath:/config/application-redis.yml
     3.4 多环境切换
+        spring:
+          profiles:
+            active: dev
 
     3.5 绑到到Bean
 
+4. Spring Boot中如何进行AOP的开发
+    4.1 导入依赖
+        <!--aop启动器-->
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        当引入`aop启动器`之后，会引入`aop依赖`和`aspectj依赖`。
+            aop依赖：如果只有这一个依赖，也可以实现AOP编程，这种方式表示使用了纯Spring AOP实现aop编程。
+            aspectj依赖：一个独立的可以完成AOP编程的AOP框架，属于第三方的，不属于Spring框架。（我们通常用它，因为它的功能更加强大）
+    4.2 如何编写切面
+        @Component // 纳入IoC容器
+        @Aspect // 指定该类为切面类
+        public class xxxAspect {
+
+            // 前置通知
+            // 切入点表达式：service包下任意类的任意方法
+            @Before("execution(* com.george.aop.service..*.*(..))")
+            public void sysLog(JoinPoint joinPoint) throws Throwable {
+
+                // 追加方法签名
+                log.append(joinPoint.getSignature().getName());
+                // 追加方法参数
+                log.append("(");
+
+                System.out.println(log);
+            }
+        }
+
+5. SpringBoot 整合 Mybatis 框架
+    5.1 导入依赖
+            <!--mybatis的启动器-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>3.0.3</version>
+            </dependency>
+            <!--mysql的驱动依赖-->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <scope>runtime</scope>
+            </dependency>
+    5.2 编写数据源配置
+            # 数据库配置
+            spring.datasource.url=jdbc:mysql://localhost:3306/springboot?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+            spring.datasource.username=root
+            spring.datasource.password=@Poole0128
+            spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+            # MyBatis配置
+            # 告诉SpringBoot Mybatis的xml文件在哪里
+            mybatis.mapper-locations=classpath:com/george/mapper/*.xml
+            # 起别名
+            mybatis.type-aliases-package=com.george.entity
+            # 主要用于处理数据库字段名与Java对象属性名之间的命名差异
+            mybatis.configuration.map-underscore-to-camel-case=true
+    5.3 @Mapper 和 @MapperScan
+            对于有大量 Mapper 类的项目 建议在入口程序上写 @MapperScan 避免编写重复大量 的@Mapper注解
+
+
+
+使用快捷键:
+    * HOME 键 : 快速定位一行文字开头
+    * END 键 : 快速定位一行文字末尾
+    * shift + home 键 : 快速选中光标到一行开头
+    * shift + end 键 : 快速选中光标到一行末尾
+    * ctrl + w 键 : 快速选中一行文本
+    * ctrl + d 键 : 复制一行
+    * ctrl + f 键 : 搜索
+    * ctrl + b 键 : 转向方法声明
+    * ctrl + j 键 : 显示上下文定义模板
+    * ctrl + e 键 : 打开最近打开的文件列表(ctrl + shift + e)
+    * ctrl + r 键 : 打开替换搜索
+    * ctrl + f4 键 : 关闭当前文件
+    * ctrl + shift + f4 : 关闭所有文件
 
 
 
