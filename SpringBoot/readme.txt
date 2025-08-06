@@ -78,13 +78,13 @@
 
     `@SpringBootTest` 会创建一个完整的 Spring 应用程序上下文（Application Context），这个上下文包含了应用程序的所有组件和服务。
         以下是 `@SpringBootTest` 做的一些主要工作：
-        1. **创建 ApplicationContext**：
+        1.  创建 ApplicationContext ：
            - `@SpringBootTest` 使用 `SpringApplication` 的 `run()` 方法来启动一个 Spring Boot 应用程序上下文。这意味着它会加载应用程序的主配置类和其他相关的配置类。
-        2. **加载配置文件**：
+        2.  加载配置文件 ：
            - 它会查找并加载默认的配置文件，如 `application.properties`
-        3. **自动配置**：
+        3.  自动配置 ：
            - 如果应用程序依赖于 Spring Boot 的自动配置特性，`@SpringBootTest` 会确保这些自动配置生效。这意味着它会根据可用的类和bean来自动配置一些组件，如数据库连接、消息队列等。
-        4. **注入依赖**：
+        4.  注入依赖 ：
            - 使用 `@SpringBootTest` 创建的应用程序上下文允许你在测试类中使用 `@Autowired` 注入需要的 bean，就像在一个真实的 Spring Boot 应用程序中一样。
     总的来说，`@SpringBootTest` 为你的测试提供了尽可能接近实际运行时环境的条件，这对于验证应用程序的行为非常有用。
 
@@ -201,6 +201,7 @@
                 <artifactId>mysql-connector-j</artifactId>
                 <scope>runtime</scope>
             </dependency>
+
     5.2 编写数据源配置
             # 数据库配置
             spring.datasource.url=jdbc:mysql://localhost:3306/springboot?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
@@ -217,6 +218,51 @@
             mybatis.configuration.map-underscore-to-camel-case=true
     5.3 @Mapper 和 @MapperScan
             对于有大量 Mapper 类的项目 建议在入口程序上写 @MapperScan 避免编写重复大量 的@Mapper注解
+
+6. Lombok 插件
+    6.1 主要注解
+        @Data：
+            等价于 `@ToString`, `@EqualsAndHashCode`, `@Getter`，`@Setter`, `@RequiredArgsConstructor`.
+            用于生成：必要参数的构造方法、getter、setter、toString、equals 和 hashcode 方法。
+        @Getter / @Setter：
+            分别用于生成所有的 getter 和 setter 方法。
+            可以作用于整个类，也可以作用于特定的字段。
+        @NoArgsConstructor：
+            生成一个无参构造方法。
+        @AllArgsConstructor：
+            生成一个包含所有实例变量的构造器。
+        @RequiredArgsConstructor ：
+            生成包含所有被 `final` 修饰符修饰的实例变量的构造方法。
+            如果没有的实例变量，则自动生成无参数构造方法
+        @ToString / @EqualsAndHashCode ：
+            用于生成 toString 和 equals/hashCode 方法。
+            这两个注解都有属性，通过这个属性可以定制toString、hashCode、equals方法。
+
+    6.2 @Builder
+         GoF23种设计模式之一：建造模式
+             建造模式（Builder Pattern）属于创建型设计模式。GoF23种设计模式之一。
+             用于解决对象创建时参数过多的问题。它通过将对象的构造过程与其表示分离，使得构造过程可以逐步完成，而不是一次性提供所有参数。建造模式的主要目的是让对象的创建过程更加清晰、灵活和可控。
+             简而言之，建造模式用于：
+                 1. 简化构造过程：通过逐步构造对象，避免构造函数参数过多。
+                 2. 提高可读性和可维护性：让构造过程更加清晰和有序。
+                 3. 增强灵活性：允许按需配置对象的不同部分。
+         这样可以更方便地创建复杂对象，并且使得代码更加易于理解和维护。
+
+    6.3 @Singular
+        @Singular注解是辅助@Builder注解的。
+        当被建造的对象的属性是一个集合，
+            这个集合属性使用@Singular注解进行标注的话，
+            可以连续调用集合属性对应的方法完成多个元素的添加。
+        如果没有这个注解，则无法连续调用方法完成多个元素的添加。代码如下：
+            public class Person {
+                // 属性
+                private final String name;
+                private final int age;
+                private final String email;
+                // Singular翻译为：单数。表示一条一条添加
+                @Singular("addPhone")
+                private final List<String> phones;
+            }
 
 
 

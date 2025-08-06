@@ -15,6 +15,7 @@
         <module>SpringBoot03</module>
         <module>SpringBoot04</module>
         <module>SpringBoot05</module>
+        <module>SpringBoot06</module>
     </modules>
 
     <parent>
