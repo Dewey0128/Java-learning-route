@@ -264,9 +264,69 @@
                 private final List<String> phones;
             }
 
+7. SpringBoot的俩大核心：启动器 和 自动配置
+        (** 配置类就是一个配置文件，一个配置文件中配置了大量的bean，一个bean就是一个组件，一个组件就是一个功能)
+    7.1 基本原理：
+        web启动器 ->(导入) 101个组件  <- 组件需要数据 <- XxxProperties(导入默认配置) <- application.yml(用户配置)
+                            ↑                               ↑
+            SpringBoot提供了大量的自动配置类：              web自动配置类
+             XxxAutoConfiguration提供数据           这个属性类对象中一般都有默认值
+    7.2 条件注解：做到组件按需加载
+        + @ConditionalOnClass：当指定的类存在时，才创建Bean。
+        + @ConditionalOnMissingClass：当指定的类不存在时，才创建Bean。
+        + @ConditionalOnBean：当容器中存在指定的Bean时，才创建Bean。
+        + @ConditionalOnMissingBean：当容器中不存在指定的Bean时，才创建Bean。
+        + @ConditionalOnProperty：当配置文件中存在指定的属性时，才创建Bean。也可以设置属性值需要匹配的值。
+        + @ConditionalOnResource：当指定的资源存在时，才创建Bean。
+        + @ConditionalOnWebApplication：当应用程序是Web应用时，才创建Bean。
+        + @ConditionalOnNotWebApplication：当应用程序不是Web应用时，才创建Bean
+    7.3 核心流程：
+        7.3.1   @SpringBootApplication  -→ 包含@EnableAutoConfiguration
+                public class MyApplication {
+                    public static void main(String[] args) {
+                        SpringApplication.run(MyApplication.class, args);
+                                                       ↑
+                                                    源配置文件
+                    }
+                }
+
+        7.3.2 @EnableAutoConfiguration
+                将`AutoConfigurationImportSelector`作为一个Bean加载到IoC容器中。这个Bean的作用是：负责收集和选择所有符合条件的自动配置类。
+                                        ↓
+                @Import({AutoConfigurationImportSelector.class})
+                public @interface EnableAutoConfiguration {
+                    String ENABLED_OVERRIDE_PROPERTY = "spring.boot.enableautoconfiguration";
+
+                    Class<?>[] exclude() default {};
+
+                    String[] excludeName() default {};
+                }
+
+                AutoConfigurationImportSelector核心代码：
+                    // 1. 获取候选的自动配置类列表
+                    // 通过注解元数据和属性信息，从META-INF/spring.factories等位置加载所有可能的自动配置类
+                    List<String> configurations = this.getCandidateConfigurations(annotationMetadata, attributes);
+                    // 2. 移除候选配置类中的重复项
+                    // 确保集合中每个配置类只出现一次，避免重复加载
+                    configurations = this.<String>removeDuplicates(configurations);
+                    // 3. 获取需要排除的配置类集合
+                    // 根据@SpringBootApplication注解的exclude、excludeName等属性，解析需要排除的类
+                    Set<String> exclusions = this.getExclusions(annotationMetadata, attributes);
+                    // 4. 检查排除的类是否有效
+                    // 验证排除的类是否存在于候选配置中，若不存在则可能抛出异常（如配置错误）
+                    this.checkExcludedClasses(configurations, exclusions);
+                    // 5. 从候选配置中移除所有需要排除的类
+                    // 执行实际的排除操作，过滤掉不需要的配置类
+                    configurations.removeAll(exclusions);
+                    // 6. 通过配置类过滤器进一步筛选配置类
+                    // 应用@Conditional等条件注解的过滤逻辑，最终确定需要加载的自动配置类
+                    configurations = this.getConfigurationClassFilter().filter(configurations);
 
 
-使用快捷键:
+
+
+
+使用快捷键:↑ ← → ↑
     * HOME 键 : 快速定位一行文字开头
     * END 键 : 快速定位一行文字末尾
     * shift + home 键 : 快速选中光标到一行开头
@@ -279,6 +339,7 @@
     * ctrl + e 键 : 打开最近打开的文件列表(ctrl + shift + e)
     * ctrl + r 键 : 打开替换搜索
     * ctrl + f4 键 : 关闭当前文件
+    * ctrl + f12 键 ：在当前Java文件搜索
     * ctrl + shift + f4 : 关闭所有文件
 
 
