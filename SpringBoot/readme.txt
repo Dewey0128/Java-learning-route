@@ -322,9 +322,80 @@
                     // 应用@Conditional等条件注解的过滤逻辑，最终确定需要加载的自动配置类
                     configurations = this.getConfigurationClassFilter().filter(configurations);
 
+8. SpringBoot的web自动配置:
+    8.1. web自动配置的依赖是如何传递的
+            8.1.1 首先引入了`web启动器`，spring-boot-starter-web
+            8.1.2 `web启动器`传递引入了`spring-boot-starter`
+            8.1.3 `spring-boot-starter`会传递引入一个`spring-boot-autoconfigure`包
+            8.1.4 在`spring-boot-autoconfigure`包中的`.imports`文件中罗列的需要导入的自动配置类
+    8.2 web开发中 application.properties 中
+            8.2.1 SpringMVC相关配置  spring.mvc.
+            8.2.2 web开发通用配置     spring.web.
+            8.2.3 文件上传配置        spring.servlet.multipart.
+            8.2.4 服务器配置          server.
+    8.3 关于`WebMvcConfigurer`接口
+        这个接口不是SpringBoot框架提供的，是Spring MVC提供的，在Spring框架4.3版本中引入的。
+        这个接口的作用主要是：允许开发者通过实现这个接口来定制Spring MVC的行为。
+        在这个接口中提供了很多方法，需要改变Spring MVC的哪个行为，则重写对应的方法即可，下面是这个接口中所有的方法，以及每个方法对应的Spring MVC行为的解释：
+        public interface WebMvcConfigurer {
+            // 用于定制 Spring MVC 如何匹配请求路径到控制器
+            default void configurePathMatch(PathMatchConfigurer configurer) {}
+
+            // 用于定制 Spring MVC 的内容协商策略，以确定如何根据请求的内容类型来选择合适的处理方法或返回数据格式
+            default void configureContentNegotiation(ContentNegotiationConfigurer configurer) {}
+
+            // 用于定制 Spring MVC 处理异步请求的方式
+            default void configureAsyncSupport(AsyncSupportConfigurer configurer) {}
+
+            // 用于定制是否将某些静态资源请求转发WEB容器默认的Servlet处理
+            default void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {}
+
+            // 用于定制 Spring MVC 解析视图的方式，以确定如何将控制器返回的视图名称转换为实际的视图资源。
+            default void configureViewResolvers(ViewResolverRegistry registry) {}
+
+            // 用于定制 Spring MVC 如何处理 HTTP 请求和响应的数据格式，包括 JSON、XML 等内容类型的转换
+            default void configureMessageConverters(List<HttpMessageConverter<?>> converters) {}
+
+            // 用于定制 Spring MVC 如何处理控制器方法中发生的异常，并提供相应的错误处理逻辑。
+            default void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {}
+
+            // 用于定制 Spring MVC 如何处理数据的格式化和解析，例如日期、数值等类型的对象的输入和输出格式。
+            default void addFormatters(FormatterRegistry registry) {}
+
+            // 用于定制 Spring MVC 如何使用拦截器来处理请求和响应，包括在请求进入控制器之前和之后执行特定的操作。
+            default void addInterceptors(InterceptorRegistry registry) {}
+
+            // 用于定制 Spring MVC 如何处理静态资源（如 CSS、JavaScript、图片等文件）的请求。
+            default void addResourceHandlers(ResourceHandlerRegistry registry) {}
+
+            // 用于定制 Spring MVC 如何处理跨域请求，确保应用程序可以正确地响应来自不同域名的 AJAX 请求或其他跨域请求。
+            default void addCorsMappings(CorsRegistry registry) {}
+
+            // 用于快速定义简单的 URL 到视图的映射，而无需编写完整的控制器类和方法。
+            default void addViewControllers(ViewControllerRegistry registry) {}
+
+            // 用于定制 Spring MVC 如何解析控制器方法中的参数，包括如何从请求中获取并转换参数值。
+            default void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {}
+
+            // 用于定制 Spring MVC 如何处理控制器方法的返回值，包括如何将返回值转换为实际的 HTTP 响应。
+            default void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> handlers) {}
 
 
+            // 用于定制 Spring MVC 如何处理 HTTP 请求和响应的数据格式，允许你添加或调整默认的消息转换器，以支持特定的数据格式。
+            default void extendMessageConverters(List<HttpMessageConverter<?>> converters) {}
 
+            // 用于定制 Spring MVC 如何处理控制器方法中抛出的异常，允许你添加额外的异常处理逻辑。
+            default void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {}
+        }
+
+9. SpringBoot的web自动配置(静态自动配置):
+    9.1 关于普通静态资源处理:
+            SpringBoot对普通静态资源处理的规则是：
+            当请求路径是[http://localhost:8080/**](http://localhost:8080/**)，根据控制器方法优先原则，会先去找合适的控制器方法，如果没有合适的控制器方法，静态资源处理才会生效，则自动去类路径下的以下4个位置查找：
+            + classpath:/META-INF/resources/
+            + classpath:/resources/
+            + classpath:/static/
+            + classpath:/public/
 
 使用快捷键:↑ ← → ↑
     * HOME 键 : 快速定位一行文字开头
@@ -338,6 +409,7 @@
     * ctrl + j 键 : 显示上下文定义模板
     * ctrl + e 键 : 打开最近打开的文件列表(ctrl + shift + e)
     * ctrl + r 键 : 打开替换搜索
+    * ctrl + o 键 ：
     * ctrl + f4 键 : 关闭当前文件
     * ctrl + f12 键 ：在当前Java文件搜索
     * ctrl + shift + f4 : 关闭所有文件
