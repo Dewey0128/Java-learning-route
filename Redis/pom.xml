@@ -11,6 +11,7 @@
     <modules>
         <module>Redis01</module>
         <module>Redis02</module>
+        <module>Redis03</module>
     </modules>
 
     <parent>
